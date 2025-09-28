@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = 'dockerhub-creds' // The ID you will create in Jenkins
+        DOCKERHUB_CREDENTIALS = 'ashishnegi77' // The ID you will create in Jenkins
         DOCKER_IMAGE_NAME   = "your-dockerhub-username/my-python-app"
         EC2_SSH_KEY         = 'staging-server-ssh-key' // The ID you will create in Jenkins
         // ** Use the PRIVATE IP of your staging server for better security and reliability **
-        STAGING_SERVER_IP   = '<your-staging-server-private-ip>'
+        STAGING_SERVER_IP   = '172.31.3.137'
         STAGING_SERVER_USER = 'ec2-user'
     }
 
