@@ -27,7 +27,7 @@ pipeline {
         stage('A. Run Tests') {
             steps {
                 echo 'Running unit tests inside the container...'
-                sh "docker run --rm ${DOCKER_IMAGE_NAME} pytest --no-test-found-exit-code=0"
+                sh "docker run --rm ${DOCKER_IMAGE_NAME} pytest"
             }
         }
         
