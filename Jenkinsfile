@@ -27,7 +27,7 @@ pipeline {
         stage('A. Run Tests') {
             steps {
                 echo 'Running unit tests inside the container...'
-                sh "docker run --rm ${DOCKER_IMAGE_NAME} pytest"
+                sh "docker run --rm ${DOCKER_IMAGE_NAME} pytest Test_app.py"
             }
         }
         
