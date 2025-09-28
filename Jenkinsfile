@@ -2,9 +2,7 @@ pipeline {
     agent any
 
     environment {
-        // This MUST be the ID of the credential you created in Jenkins.
         DOCKERHUB_CREDENTIALS = 'dockerhub-creds'
-        // This MUST be your Docker Hub username.
         DOCK-ER_IMAGE_NAME   = "ashishnegi77/my-python-app"
         EC2_SSH_KEY         = 'staging-server-ssh-key'
         STAGING_SERVER_IP   = '172.31.3.137'
@@ -26,11 +24,11 @@ pipeline {
             }
         }
 
-        // --- NEW STAGE ADDED HERE ---
+       
         stage('A. Run Tests') {
             steps {
                 echo 'Running unit tests inside the container...'
-                // Run tests within a temporary container from the image we just built
+              
                 sh "docker run --rm ${DOCKER_IMAGE_NAME} pytest"
             }
         }
