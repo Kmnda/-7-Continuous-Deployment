@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        // This MUST be the ID you created in Jenkins, not your username.
+        // This MUST be the ID of the credential you created in Jenkins.
         DOCKERHUB_CREDENTIALS = 'dockerhub-creds'
-        // I have updated this with your Docker Hub username.
+        // This MUST be your Docker Hub username.
         DOCKER_IMAGE_NAME   = "ashishnegi77/my-python-app"
         EC2_SSH_KEY         = 'staging-server-ssh-key'
         STAGING_SERVER_IP   = '172.31.3.137'
@@ -28,7 +28,6 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
-                        // Tag the image with the build number and 'latest'
                         def customTag = "build-${env.BUILD_NUMBER}"
                         sh "docker tag ${DOCKER_IMAGE_NAME} ${DOCKER_IMAGE_NAME}:${customTag}"
                         sh "docker push ${DOCKER_IMAGE_NAME}:${customTag}"
